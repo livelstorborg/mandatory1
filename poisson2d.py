@@ -1,6 +1,7 @@
 import numpy as np
 import sympy as sp
 import scipy.sparse as sparse
+from scipy.interpolate import interpn
 
 x, y = sp.symbols('x,y')
 
@@ -147,7 +148,6 @@ class Poisson2D:
         The value of u(x, y)
 
         """
-        from scipy.interpolate import interpn
         x_coords = np.linspace(0, self.L, self.N+1)
         y_coords = np.linspace(0, self.L, self.N+1)
         return float(interpn((x_coords, y_coords), self.U, 
